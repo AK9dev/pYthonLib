@@ -1,0 +1,144 @@
+import random
+
+
+def mage_ogre():
+
+    leavecount = 0
+    health = 2 
+    damage = random.randint(1,10)
+    mageH = 10
+        while health>0:
+              print("-------------------")
+              print("ogre has",health,"health left")
+              print()
+              print("you have",mageH,"health left")
+                    guess = int(input("guess a number between 1 and 10 to attack the ogre"))
+                
+                
+                 
+              if guess<damage:
+                 print("----------------")
+                 print("Your spell was too short, you missed")
+                 print(" The ogre hit you and you lost one health")
+                       mageH=mageH-1
+              elif guess>damage:
+                        print("----------------")
+                        print("Your spell was to high, you missed")
+                        print("The ogre stabbed you, and you lost one health")
+                        mageH=mageH-1
+ 
+              elif health==0:
+                        print(" you have defeated the ogre!")
+ 
+          
+              elif guess==damage:
+                         print("----------------")
+                         print(" Spot on !, you hit the ogre, and it lost one health")
+                         health = health-1
+                         damage = random.randint(1,10)
+
+        
+        
+                      
+                 
+def fight():
+    print()
+    print()
+    print(" You have decided to fight in the dungeon")
+    print()
+    print(" As you walk through the dungeon, an ogre suddenly appears")
+    mage_ogre()
+    
+def dungeonintro():
+
+    print("welcome to the dungeon")
+    print('''While in the dungeon, you will be able to choose to fight
+            the next monster to progress, or enter the shop, and or quit
+            the game''')
+    print()
+    print()
+    option = int(input('''Would you like to:
+                        (1): Fight
+                        (2): Go to Shop
+                        (3): Quit
+                                '''))
+    if option == 1:
+        fight()
+
+    if option == 2:
+        shop()
+
+    if option == 3:
+        end()
+    
+    
+
+
+
+
+def knight():
+    print()
+    print()
+    print("Welcome to the guild of knights")
+    print("Would you like to enter the Dungeon, y/n")
+    if input().lower().startswith('y'):
+                        dungeonintro()
+
+
+         
+
+def mage():
+    print()
+    print()
+    print("Welcome to the guild of mages")
+    print("Would you like to enter the Dungeon, y/n")
+    if input().lower().startswith('y'):
+                        dungeonintro()
+
+          
+
+def instructions():
+    print('''Dungeons and Pythons is an interactive RPG game where you pick one
+of two classes: Mage, Knight. Once you have
+picked your class, you have the option to proceed through the dungeon,
+where you will come across randomly generated enemies who you will fight.
+Successfully getting rid of enemies will give you gold and upgrade your
+character's abilities, but you will also have the option to flee if the
+enemy is too strong.
+
+Between fights, you will also have the option to use gold to buy potions
+items to help you proceed through the dungeon. Remember, the skill level
+and gold of enemies will vary, so weak monsters may have tons of gold,
+while strong monsters may not have much gold at all.''')
+
+    
+
+print("Welcome to Dungeons and Pythons")
+
+#Checks if player needs to read instructions
+print("Would you like to read the instructions to this game? y/n :")
+if input().lower().startswith('y'):
+                 instructions()
+
+#prints statement for player to pick a class
+print()
+print()
+selec =int(input('''Which class would you like to pick:
+       (1) Mage: A wizard who may have low health, but does
+                 tons of damage to monsters.
+                 
+       (2) Knight: A balanced warrior with decent attack and health
+           '''))
+
+if selec == 1:
+    mage()
+
+if selec == 2:
+    knight()
+
+    
+           
+
+
+    
+
