@@ -1,0 +1,28 @@
+
+def mage_ogre():
+
+    health = 2
+    userName = input("please enter your name:")
+    damage = random.randint(1,10)
+    mageH = 10
+
+    while health>0:
+        print("------------------------")
+        print("ogre has",health,"health left")
+        print()
+        print("you have",mageH,"health left")
+        guess = int(input("guess a number between 1 and 10 to attack the ogre"))
+    
+
+        if guess<damage:
+            print("Your spell was too short, you missed")
+            print(" The ogre hit you and you lost one health")
+            mageH=mageH-1
+        elif guess>damage:
+             print("Your spell was to high, you missed")
+             print("The ogre stabbed you, and you lost one health")
+             mageH=mageH-1
+ 
+        elif guess==damage:
+             print(" Spot on !, you hit the ogre, and it lost one health")
+             health = health-1
