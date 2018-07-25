@@ -1,0 +1,141 @@
+''' the objective of the program is to successfully have one class the player can choose,
+    and to have a working function that randomly chooses monsters the player must fight,
+    and is able to succesffuly choose between two monsters, an ogre and a dragon'''
+
+import random
+import time
+
+
+#Function that chooses whether the player faces a dragon or ogre
+def dungeonPicker():
+    monster = random.randint(1,2)
+    if monster==1:
+        ogre()
+    else:
+        dragon()
+   
+#function where player fights ogre
+def ogre():
+    
+    health = 2
+    damage = random.randint(1,10)
+    pHealth = 10
+    print("------------------------")
+    print(' A Wild Ogre Appeared!!!')
+    while pHealth>0:
+        time.sleep(1)
+        print("------------------------")
+        print("ogre has",health,"health left")
+        print()
+        print("you have,",pHealth,",health left")
+        attack = int(input("guess a number between 1 and 10 to attack the ogre: "))
+    
+
+        if attack<damage:
+            print()
+            time.sleep(2)
+            print('----------')
+            print("Your attack was too short, you missed")
+            time.sleep(1)
+            print(" The ogre hit you and you lost one health")
+            pHealth=pHealth-1
+        elif attack>damage:
+             print()
+             time.sleep(2)
+             print("----------")
+             print("Your spell was to high, you missed")
+             time.sleep(1)
+             print("The ogre stabbed you, and you lost one health")
+             pHealth=pHealth-1
+        #if ogre health depleated,return to base, if not, assign new damage number for ogre's last life
+        elif attack==damage:
+             health = health-1
+             if health==0:
+                time.sleep(3)
+                print()
+                print("----------")
+                print("You have defeated the ogre!!!!")
+                print("Now returning to base")
+                print()
+                print()
+                knightDungeon()
+                
+             else:
+                time.sleep(2)
+                print("----------")
+                print(" Spot on !, you hit the ogre, and it lost one health")
+                damage = random.randint(1, 10)
+
+           
+#function that has player fight dragon, basically clone of Ogre but with does more damage when player fails
+def dragon():
+    health = 2
+    damage = random.randint(1,10)
+    pHealth = 10
+    print("------------------------")
+    print(' A Wild Dragon Appeared!!!')
+    time.sleep(2)
+    while pHealth>0:
+        time.sleep(1)
+        print("------------------------")
+        print("dragon has",health,"health left")
+        print()
+        print("you have,",pHealth,",health left")
+        attack = int(input("guess a number between 1 and 10 to attack the dragon: "))
+    
+
+        if attack<damage:
+            print()
+            time.sleep(2)
+            print('----------')
+            print("Your attack was too short, you missed")
+            time.sleep(1)
+            print(" The dragon burned you and you lost two health")
+            pHealth=pHealth-2
+        elif attack>damage:
+             print()
+             time.sleep(2)
+             print("----------")
+             print("Your spell was to high, you missed")
+             time.sleep(1)
+             print("The dragon burned you, and you lost two health")
+             pHealth=pHealth-2
+ 
+        elif attack==damage:
+             health = health-1
+             if health==0:
+                time.sleep(3)
+                print()
+                print("----------")
+                print("You have defeated the dragon!!!!")
+                print("Now returning to base")
+                print()
+                print()
+                knightDungeon()
+                
+             else:
+                time.sleep(2)
+                print("----------")
+                print(" Spot on !, you hit the dragon, and it lost one health")
+                damage = random.randint(1, 10)
+
+           
+
+
+
+#function that asks if player wants to continue fighting monsters(basically whether they want to keep playing)
+def knightDungeon():
+    time.sleep(2)
+    
+    print("Welcome to the guild of knights")
+    print("Would you like to enter the dungeon, y/n")
+    if input().lower().startswith('y'):
+        dungeonPicker()
+
+
+#This portion is for class selection, and can be expanded
+character = int(input(''' Which class would you like to pick:
+                          (1)Knight: Warrior with balanced health and damage
+                          '''))
+if character==1:
+   knightDungeon()
